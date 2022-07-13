@@ -1,3 +1,5 @@
+## 简单了解jvm
+
 ### 1.jvm架构模型
 
 java 编译器输入的指令流基本上是一种基于<font color=Red>栈的指令集架构</font>，另外一种指令集架构则是基于<font color=Red>寄存器的指令集架构</font>
@@ -53,7 +55,7 @@ Java虚拟机的启动是通过引导类加载器(bootstrap class loader)创建�
 
 ### 3.jvm发展史
 
-**Sun Classic VM**
+#### **Sun Classic VM**
 
 - 早在1996年Javal.0版本的时候, Sun公司发布了一款名为Sun ClassicVM的Java虚拟机,它同时也是世界上第一款商用Java虚拟机, JDK1.4时完全被淘汰。
 
@@ -65,7 +67,7 @@ Java虚拟机的启动是通过引导类加载器(bootstrap class loader)创建�
 
 
 
-**Exact VM**
+#### **Exact VM**
 
 - 为了解决上一个虚拟机问题, jdk1.2时, sun提供了此虚拟机。
 
@@ -86,7 +88,7 @@ Java虚拟机的启动是通过引导类加载器(bootstrap class loader)创建�
 
 
 
-**SUN公司的Hotspot VMI**
+#### **SUN公司的Hotspot VMI**
 
 - HotSpot历史
 
@@ -111,7 +113,7 @@ Java虚拟机的启动是通过引导类加载器(bootstrap class loader)创建�
 
 
 
-**BEA 的 JRockit**
+#### **BEA 的 JRockit**
 
 - 专注于服务器端应用
   - 它可以不太关注程序启动速度,因此JRockit内部不包含解析器实现,全部代码都靠即时编译器编译后执行。
@@ -131,7 +133,7 @@ Java虚拟机的启动是通过引导类加载器(bootstrap class loader)创建�
 
 
 
-**IBM 的 J9**
+#### **IBM 的 J9**
 
 - 全称: IBM Technology for Java virtual Machine,简称IT4J,内部代号: J9
 
@@ -142,3 +144,25 @@ Java虚拟机的启动是通过引导类加载器(bootstrap class loader)创建�
 - 目前,有影响力的三大商用服务器之一,也号称是世界上最快的Java虚拟机。
 
 - 2017年左右, IBM发布了开源J9 VM,命名为OpenJ9,交给Eclipse基金会管理,也称为Ecilpse OpenJ9
+
+
+
+## jvm内存结构
+
+### 1.jvm内存结构图
+
+![jvm内存结构图](https://github.com/2122446868/note/blob/main/jvm/image/jvm%E5%86%85%E5%AD%98%E7%BB%93%E6%9E%84%E8%AF%A6%E7%BB%86%E5%9B%BE.png?raw=true)
+
+### 2.类加载器子系统
+
+#### 2.1流程图以及作用
+
+![类加载流程图](https://github.com/2122446868/note/blob/main/jvm/image/%E7%B1%BB%E5%8A%A0%E8%BD%BD%E5%AD%90%E7%B3%BB%E7%BB%9F.png?raw=true)
+
+### 2.2类加载器Class Loader角色
+
+- class file存在于本地硬盘上,可以理解为设计师画在纸上的模板,而最终这个模板在执行的时候是要加载到JVM当中来根据这个文件实例化出n个一模一样的实例。
+
+- class file 加载到 jvm 中,被称为DNA元数据模板,放在方法区。
+
+- 在.class文件 --> jvm --> 最终成为元数据模板  ,此过程就要一个运输工具(类装载Class Loader),扮演一个快递员的角器色
